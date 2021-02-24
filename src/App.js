@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function App() {
     const products = [
@@ -22,7 +22,9 @@ function App() {
     <div className = "App" >
         <header className = "App-header" >
         <p>I am a react person</p>
+        <Todos></Todos>
         <Counter></Counter>
+        <Users></Users>
         <ul>{
             nayoks.map(nayok=> <li>{nayok}</li>)
             }
@@ -40,6 +42,45 @@ function App() {
         </header> 
     </div>
     );
+}
+
+function Todos(){
+    const [todos,setTodos] = useState([])
+    useEffect(()=>{
+        fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(res => res.json())
+        .then(data => setTodos(data) )
+    },[])
+    return(
+        <div>
+            <h3>to do list</h3>
+            <ul>
+                {
+                    todos.map(todo=><li>to do: {todo.title}   completed:{todo.completed.toString()}</li>)
+                }
+            </ul>
+          
+        </div>
+    )
+}
+
+function Users(){
+    const [users,setUsers] = useState([])
+    useEffect(()=>{
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res=> res.json())
+        .then(data=>setUsers(data))
+    },[])
+    return (
+        <div>
+            <h3>dynamic users: {users.length}</h3>
+           <ul>
+               {
+                   users.map(user=><li>{user.name}, {user.phone},{user.email}</li>)
+               }
+           </ul>
+        </div>
+    )
 }
 
 function Counter(){
