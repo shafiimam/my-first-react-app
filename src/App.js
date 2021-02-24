@@ -24,6 +24,7 @@ function App() {
         <p>I am a react person</p>
         {/* <Todos></Todos> */}
         <Counter></Counter>
+        <MovieCounter></MovieCounter>
         <Users></Users>
         <ul>{
             nayoks.map(nayok=> <li>{nayok}</li>)
@@ -39,6 +40,7 @@ function App() {
         <Person name = "piash" profession="web developer"></Person>
         <Person name = "priya" profession="house wife"></Person>
         <Person name="rafi" profession="jobless"></Person>
+        
         </header> 
         <Nayok name="joshim"></Nayok>
         <Nayok name="sakib"></Nayok>
@@ -46,6 +48,23 @@ function App() {
     );
 }
 
+
+function MovieCounter(){
+    const [movieCount,setMovieCount] = useState(0)
+    
+    return (
+        <div>
+            <button onClick={()=> setMovieCount(movieCount+1)}>add movie</button>
+            <h5>number of movies:{movieCount} </h5>
+            <MovieDisplay movies={movieCount}></MovieDisplay>
+        </div>
+    )
+}
+function MovieDisplay(props){
+    return(
+        <h4>movies i have acted: {props.movies}</h4>
+    )
+}
 function Todos(){
     const [todos,setTodos] = useState([])
     useEffect(()=>{
