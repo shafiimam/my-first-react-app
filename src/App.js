@@ -22,7 +22,7 @@ function App() {
     <div className = "App" >
         <header className = "App-header" >
         <p>I am a react person</p>
-        <Todos></Todos>
+        {/* <Todos></Todos> */}
         <Counter></Counter>
         <Users></Users>
         <ul>{
@@ -40,6 +40,8 @@ function App() {
         <Person name = "priya" profession="house wife"></Person>
         <Person name="rafi" profession="jobless"></Person>
         </header> 
+        <Nayok name="joshim"></Nayok>
+        <Nayok name="sakib"></Nayok>
     </div>
     );
 }
@@ -146,6 +148,18 @@ function Person(props){
         <div style={style}>
             <h3>My name: {props.name}</h3>
             <p>My profession: {props.profession}</p>
+        </div>
+    )
+}
+function Nayok(props){
+    const nayokStyle = {
+        border:'2px solid red',
+        margin:'5px'
+    }
+    return(
+        <div style={nayokStyle}>
+            <h1>Ami khol nayok: {props.name}</h1>
+            <h3>i have done 5 movies</h3>
         </div>
     )
 }
